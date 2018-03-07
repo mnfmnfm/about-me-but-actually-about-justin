@@ -1,0 +1,74 @@
+body {
+    background:none;
+}
+header {
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+}
+h1 {
+    font-size: 36px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align:center;
+    color: white;
+    padding: 18px;
+    font-weight:600;
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 28px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    color: white;
+    padding: 18px;
+
+}
+img {
+    display: block;
+    position: absolute;
+    top:200px;
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    height: 300px;
+    width: auto;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+#circleAroundImage {
+    display:block;
+    position:absolute;
+    top:175px;
+    left:0;
+    right:0;
+    margin: 0 auto;
+    height:350px;
+    width:350px;
+    z-index: 1;
+    border-radius:50%;
+    transition: all ease .25s;
+    
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+}
+img:hover ~ #circleAroundImage {
+    transform: scale(1.1);
+
+    background: #c0392b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8e44ad, #c0392b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button {
+    display:block;
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px;
+}
