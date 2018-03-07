@@ -1,4 +1,8 @@
 "use strict";
+
+// TODO: Variable for guitar answer
+var numGuitars = 0;
+
 function quizAboutMe() { // Creating a function so it can be called rather than start right when the browser opens.
   var questAboutMe = [ // Creating an array that will store my questions for the quiz.
     'Do you think I was born in Mexico?', 
@@ -9,10 +13,12 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     'Would you believe me if I said I met my wife on "The Bachelorette"?',
 
-    'Would believe that I was once struck by lightning?'
+    'Would believe that I was once struck by lightning?',
+
+    'If you had to guess, how many guitars do you think I have?'
   ];
 
-  var correctAnsw = ['n', 'y', 'y', 'n', 'n']; // Creating an array that determines what the right responses should be.
+  var correctAnsw = ['n', 'y', 'y', 'n', 'n', numGuitars]; // Creating an array that determines what the right responses should be.
 
   var incorrectAnsw = ['y', 'n', 'n', 'y', 'y']; // Creating an array allowing me to display the incorrect responses.
 
@@ -25,7 +31,9 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     'I know she looks great but I didn\'t meet her on "The Bachelorette". You know those things never work out!',
 
-    'Your right. I have never been struck by lightning.'
+    'Your right. I have never been struck by lightning.',
+
+    'Good Guess! I have ' + numGuitars + '.'
 
   ];
 
@@ -38,7 +46,9 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     'I know, I think she looks that good too! However, we didn\'t meet on the "The Bachelorette". You know those things never work out!',
 
-    'I actually have never been struck by lightning.'
+    'I actually have never been struck by lightning.',
+
+    'Sorry! I actually have ' + numGuitars
 
   ];
 
@@ -52,26 +62,50 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
   for (var i = 0; i < questAboutMe.length; i++) {
 
-    userResp = prompt(questAboutMe[i]);
-    console.log('This is the user\'s response: ' + userResp); //Displaying answer given in console.
+    if (i === 5) { // Adjust questioning for Question#6 
+      
+      var numOfGuesses = 5;
+      
+      while (numOfGuesses > 0) {
+        var userNumResp = prompt(questAboutMe[i] + ' (it\'s between 1 and 50) You have ' + numOfGuesses + ' out of 5 guesses left.');
+        console.log('This is the user\'s input: ' + userNumResp);
+        userNumResp = parseInt(userNumResp, 10); // Now user input is an integer
+        console.log('This is the user\'s input as an integer: ' + userNumResp);
 
-    if (userResp) { // This first if else is used to handel the 'null' or 'undefined'. If the user enters something userResp is equal to that but if box is empty or they cancel userResp = 'canceled'.
-      shrtUserResp = userResp.substring(0, 1).toLowerCase();
-      console.log('This is the user\'s shortened response:  ' + shrtUserResp); // Displaying shortened answer to be compared.
+        if (userNumResp === numGuitars){
+          alert('Nice guess! You are correct!');
+          score++;
+          console.log('The user\'s score so far: Score = ' + score);
+          break;
+        } else {
+          numOfGuesses--;
+        }
+      }
+
     } else {
-      shrtUserResp = 'c'; // If the user cancels or doesn't type antyhing we set shrtUserResp to 'c' for 'canceled'.
-    }
 
-    if (shrtUserResp === correctAnsw[i]) { // This if else if statement is used to go through questions, gather response, and display correct or incorrect messages.
-      alert(corrResp[i]);
-      score++; // Adding correct response to the user's score
-      console.log('The user\'s score so far: Score = ' + score); // Displaying current score in the console
-    } else if (shrtUserResp === incorrectAnsw[i]) {
-      alert(incorrResp[i]); // Firing incorrect response if user is wrong.
-      console.log('The user\'s score so far: Score = ' + score); // Not adding to score but still displaying their current score even if they get it wrong.
-    } else { 
-      alert('I\'m not sure what you put but you didn\'t say "yes" or "no".'); 
-      console.log('The user\'s score so far: Score = ' + score);
+      userResp = prompt(questAboutMe[i]);
+      console.log('This is the user\'s response: ' + userResp); //Displaying answer given in console.
+
+      if (userResp) { // This first if else is used to handel the \'null\' or \'undefined\'. If the user enters something userResp is equal to that but if box is empty or they cancel userResp = 'canceled'.
+
+        shrtUserResp = userResp.substring(0, 1).toLowerCase();
+        console.log('This is the user\'s shortened response:  ' + shrtUserResp); // Displaying shortened answer to be compared.
+      } else {
+        shrtUserResp = 'c'; // If the user cancels or doesn't type antyhing we set shrtUserResp to 'c' for 'canceled'.
+      }
+
+      if (shrtUserResp === correctAnsw[i]) { // This if else if statement is used to go through questions, gather response, and display correct or incorrect messages.
+        alert(corrResp[i]);
+        score++; // Adding correct response to the user's score
+        console.log('The user\'s score so far: Score = ' + score); // Displaying current score in the console
+      } else if (shrtUserResp === incorrectAnsw[i]) {
+        alert(incorrResp[i]); // Firing incorrect response if user is wrong.
+        console.log('The user\'s score so far: Score = ' + score); // Not adding to score but still displaying their current score even if they get it wrong.
+      } else { 
+        alert('I\'m not sure what you put but you didn\'t say "yes" or "no".'); 
+        console.log('The user\'s score so far: Score = ' + score);
+      }
     }
   }
   document.getElementById('takeQuiz').style.display = 'none'; // Removing "Take the quiz" button after quiz is taken.
