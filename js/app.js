@@ -17,7 +17,7 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
     var incorrectAnsw = ['y', 'n', 'n', 'y', 'y']; // Creating an array allowing me to display the incorrect responses.
 
     var corrResp = [ // Another array that is storing the responses that will be given when the user answers correctly.
-        'I can\'t fool you. I was actually born in the small of Deer Park, Washington.',
+        'I can\'t fool you. I was actually born in the small town of Deer Park, Washington.',
 
         'You are correct. I can also play the saxophone, piano, guitar and ukelele.',
 
@@ -42,36 +42,39 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     ];
 
-    var userResp; // An empty array that will be used to store the users responses.
+    var userResp; // A variable that will be used to gather the user's response.
 
     var shrtUserResp; // A variable that shortens the user's response to just one letter so we can compare 'y' and 'n'.
 
-    var score = 0; // A value we will use to display the score of how many the user got right. 
+    var score = 0; // A value we will use to display the score of how many the user got right.
+    
+    alert('You\'re ready to take the quiz! Please answer the following questions with \"yes\" or \"no\".'); // An alert that begins the quiz and tells the user to enter "yes" or "no".
 
     for (var i = 0; i < questAboutMe.length; i++) {
 
         userResp = prompt(questAboutMe[i]);
-            console.log(userResp); //Displaying answer given in console.
-            if (userResp) {
+            console.log('This is the user\'s response: ' + userResp); //Displaying answer given in console.
+            if (userResp) { // This first if else is used to handel the 'null' or 'undefined'. If the user enters something userResp is equal to that but if box is empty or they cancel userResp = 'canceled'.
             shrtUserResp = userResp.substring(0, 1).toLowerCase();
-                console.log(shrtUserResp); // Displaying shortened answer to be compared. 
+                console.log('This is the user\'s shortened response:  ' + shrtUserResp); // Displaying shortened answer to be compared. 
             } else {
-                shrtUserResp = 'canceled';
+                shrtUserResp = 'c'; // If the user cancels or doesn't type antyhing we set shrtUserResp to 'c' for 'canceled'.
             }
 
-            if (shrtUserResp === correctAnsw[i]) { 
+            if (shrtUserResp === correctAnsw[i]) { // This if else if statement is used to go through questions, gather response, and display correct or incorrect messages.
                 alert(corrResp[i]);
-                score++;
-                console.log('Score = ' + score)
+                score++; // Adding correct response to the user's score
+                console.log('The user\'s score so far: Score = ' + score) // Displaying current score in the console
             } else if (shrtUserResp === incorrectAnsw[i]) {
-                alert(incorrResp[i]);
-                console.log('Score = ' + score);
+                alert(incorrResp[i]); // Firing incorrect response if user is wrong.
+                console.log('The user\'s score so far: Score = ' + score); // Not adding to score but still displaying their current score even if they get it wrong.
             } else { 
                 alert('I\'m not sure what you put but you didn\'t say \"yes\" or \"no\".'); 
-                console.log('Score = ' + score);
+                console.log('The user\'s score so far: Score = ' + score);
             }
     }
-    
-    document.getElementById(score).innerHTML = 'Your Score is ' + score + '/5';
+    document.getElementById("takeQuiz").style.display = "none"; // Removing "Take the quiz" button after quiz is taken.
+    document.getElementById("scoreHead").style.display = "inherit"; // Displaying Score Header after quiz is taken.
+    document.getElementById("score").innerHTML = score + '/5'; // Displaying Total Score after quiz is taken.
 
 }
