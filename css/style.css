@@ -40,7 +40,6 @@ nav a {
     text-decoration: none;
     color:white;
 }
-ul li a {}
 h6#scoreHead {
     display:none;
     position: absolute;
@@ -133,4 +132,19 @@ button:hover {
     bottom: 8vh;
     left: 0;
     right: 0;
+}
+#home {
+    transition: all .3s ease;
+}
+#home a:before {
+    content: '';
+    position: absolute; 
+    height:62px;
+    top: 0;
+    left: 100%;
+    background: #EA5721;
+}
+
+#home:hover ~ #home a:before {
+    left: 0%;
 }

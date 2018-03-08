@@ -2,13 +2,13 @@
 
 // function quizAboutMe() {} // SAVE FOR LATER. Creating a function so it can be called rather than start right when the browser opens.
 var questAboutMe = [ // Creating an array that will store my questions for the quiz.
-  'Do you think I was born in Mexico?', 
+  'Do you think I was born in Mexico?',
 
   'Do you think that I know how to play the clarinet?',
 
   'Do you think I was once hit in the head with a chunk of asphalt?',
 
-  'Would you believe me if I said I met my wife on "The Bachelorette"?',
+  'Would you believe me if I sgiaid I met my wife on "The Bachelorette"?',
 
   'Would you believe that I was once struck by lightning?',
 
@@ -17,20 +17,12 @@ var questAboutMe = [ // Creating an array that will store my questions for the q
   'Can you guess a state that I have traveled to?'
 ];
 
-var numGuitars = Math.floor((Math.random() * 20) + 1); //Creating a random answer for # of guitars.
-console.log('This how many guitars: ' + numGuitars);
-
-var statesVisited = ['washington', 'hawaii', 'idaho', 'montana', 'california', 'oregon', 'utah'];
-
-var statesVisitedFormat = []; // Will be used to display states for question #7. Comes in handy later.
-
-for (var k = 0; k < statesVisited.length; k++){ // Created a 'space' and capital letter for the state. 
-  statesVisitedFormat[k] = ' ' + statesVisited[k].substring(0, 1).toUpperCase() + statesVisited[k].slice(1);
-}
-
 var correctAnsw = ['n', 'y', 'y', 'n', 'n']; // Creating an array that determines what the right responses should be.
 
 var incorrectAnsw = ['y', 'n', 'n', 'y', 'y']; // Creating an array allowing me to display the incorrect responses.
+
+var numGuitars = Math.floor((Math.random() * 20) + 1); //Creating a random answer for # of guitars.
+console.log('This how many guitars: ' + numGuitars);
 
 var corrResp = [ // Another array that is storing the responses that will be given when the user answers correctly.
   'I can\'t fool you. I was actually born in the small town of Deer Park, Washington.',
@@ -49,7 +41,7 @@ var corrResp = [ // Another array that is storing the responses that will be giv
 
 var incorrResp = [ // An array that stores the responses that will be given when the user answers incorrectly.
   'I know it\'s deceiving, but I was actually born in a small town called Deer Park.',
-  
+
   'You might be surprised but I acutally can play the clarinet, as well as the guitar, piano and ukulele.',
 
   'Believe it or not, I got nailed in the head and recieved 5 stitches.',
@@ -61,6 +53,14 @@ var incorrResp = [ // An array that stores the responses that will be given when
   'Sorry! I actually have ' + numGuitars
 
 ];
+
+var statesVisited = ['washington', 'hawaii', 'idaho', 'montana', 'california', 'oregon', 'utah'];
+
+var statesVisitedFormat = []; // Will be used to display states for question #7. Comes in handy later.
+
+for (var k = 0; k < statesVisited.length; k++) { // Created a 'space' and capital letter for the state.
+  statesVisitedFormat[k] = ' ' + statesVisited[k].substring(0, 1).toUpperCase() + statesVisited[k].slice(1);
+}
 
 var userResp; // A variable that will be used to gather the user's response.
 
@@ -74,12 +74,12 @@ alert('You\'re ready to take the quiz! Please answer the following questions wit
 
 for (var i = 0; i < questAboutMe.length; i++) {
 
-  if (i === 5) { // Adjust questioning for Question #6 
-    
+  if (i === 5) { // Adjust questioning for Question #6
+
     alert('Time for some bonus questions!! Can you guess the right answer?');
 
     var numOfGuesses = 5;
-    
+
     while (numOfGuesses > 0) {
       var userNumResp = prompt(questAboutMe[i] + ' (It\'s between 1 and 20.) You have ' + numOfGuesses + ' out of 5 guesses left.');
       console.log('This is the user\'s input: ' + userNumResp);
@@ -102,11 +102,11 @@ for (var i = 0; i < questAboutMe.length; i++) {
     }
 
   } else if (i === 6) { // adjusting for question #7
-    
+
     alert('Here\'s another bonus question!');
 
-    numOfGuesses = 6; 
-    
+    numOfGuesses = 6;
+
     while (numOfGuesses > 0) {
       userResp = prompt(questAboutMe[i] + ' There\'s 7 of them. You have ' + numOfGuesses + ' out of 6 guesses left.');
       console.log('This is the user\'s input: ' + userNumResp);
@@ -115,10 +115,10 @@ for (var i = 0; i < questAboutMe.length; i++) {
 
       for (var j = 0; j < statesVisited.length; j++){
         if (shrtUserResp === statesVisited[j]) {
-          var isCorrect = true;
-          break; 
+          isCorrect = true;
+          break;
         } else {
-          isCorrect = false; 
+          isCorrect = false;
         }
       }
 
@@ -135,7 +135,7 @@ for (var i = 0; i < questAboutMe.length; i++) {
     if (!isCorrect){
       alert('At least you tried! Here were all the possible answers you could have put:' + statesVisitedFormat.toString() + '.');
     }
-    
+
   }
   else {
 
@@ -157,8 +157,8 @@ for (var i = 0; i < questAboutMe.length; i++) {
     } else if (shrtUserResp === incorrectAnsw[i]) {
       alert(incorrResp[i]); // Firing incorrect response if user is wrong.
       console.log('The user\'s score so far: Score = ' + score); // Not adding to score but still displaying their current score even if they get it wrong.
-    } else { 
-      alert('I\'m not sure what you put but you didn\'t say "yes" or "no".'); 
+    } else {
+      alert('I\'m not sure what you put but you didn\'t say "yes" or "no".');
       console.log('The user\'s score so far: Score = ' + score);
     }
   }
