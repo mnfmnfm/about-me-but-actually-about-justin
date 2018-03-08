@@ -24,6 +24,23 @@ h2 {
 h6 {
     font-size:14px;
 }
+nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: left;
+    font-size: 42px;
+    margin: 5px 5vh 5vh 5px;
+}
+ul li {
+    margin: 3px;
+    padding: 10px;
+}
+nav a {
+    text-decoration: none;
+    color:white;
+}
+ul li a {}
 h6#scoreHead {
     display:none;
     position: absolute;
