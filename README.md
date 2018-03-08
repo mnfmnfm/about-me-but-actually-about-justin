@@ -15,3 +15,14 @@ These are the questions that were asked for the quiz:
     4. 'Would you believe me if I said I met my wife on "The Bachelorette"?',
 
     5. 'Would believe that I was once struck by lightning?'
+
+#### Pair Programming
+March 8, 2018
+Driver: Katy Bowers
+Navigator: Justin Morris
+
+Note: Forgot to fork, here are the changes that weren't committed: 
+    1. Created function for randomGuitar variable
+    2. Created function to format states for ending string
+    3. Created function containing the last for loop
+
