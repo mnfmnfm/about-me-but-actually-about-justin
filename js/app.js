@@ -1,8 +1,5 @@
 "use strict";
 
-// TODO: Variable for guitar answer
-var numGuitars = 0;
-
 function quizAboutMe() { // Creating a function so it can be called rather than start right when the browser opens.
   var questAboutMe = [ // Creating an array that will store my questions for the quiz.
     'Do you think I was born in Mexico?', 
@@ -13,12 +10,25 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     'Would you believe me if I said I met my wife on "The Bachelorette"?',
 
-    'Would believe that I was once struck by lightning?',
+    'Would you believe that I was once struck by lightning?',
 
-    'If you had to guess, how many guitars do you think I have?'
+    'If you had to guess, how many guitars do you think I have?',
+
+    'Can you guess a state that I have lived in?'
   ];
 
-  var correctAnsw = ['n', 'y', 'y', 'n', 'n', numGuitars]; // Creating an array that determines what the right responses should be.
+  var numGuitars = Math.floor((Math.random() * 20) + 1); //Creating a random answer for # of guitars.
+  console.log('This how many guitars: ' + numGuitars);
+
+  var statesVisited = ['washington', 'hawaii', 'idaho', 'montana', 'california', 'oregon', 'utah'];
+
+  var statesVisitedFormat = []; 
+
+  for (var k = 0; k < statesVisited.length; k++){
+    statesVisitedFormat[k] = ' ' + statesVisited[k].substring(0, 1).toUpperCase() + statesVisited[k].slice(1);
+  }
+
+  var correctAnsw = ['n', 'y', 'y', 'n', 'n']; // Creating an array that determines what the right responses should be.
 
   var incorrectAnsw = ['y', 'n', 'n', 'y', 'y']; // Creating an array allowing me to display the incorrect responses.
 
@@ -58,22 +68,58 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
   var score = 0; // A value we will use to display the score of how many the user got right.
 
+  var isCorrect; // This will be a boolean value to see determine if they got question right.
+
   alert('You\'re ready to take the quiz! Please answer the following questions with "yes" or "no".'); // An alert that begins the quiz and tells the user to enter "yes" or "no".
 
   for (var i = 0; i < questAboutMe.length; i++) {
 
-    if (i === 5) { // Adjust questioning for Question#6 
+    if (i === 5) { // Adjust questioning for Question #6 
       
       var numOfGuesses = 5;
       
       while (numOfGuesses > 0) {
-        var userNumResp = prompt(questAboutMe[i] + ' (it\'s between 1 and 50) You have ' + numOfGuesses + ' out of 5 guesses left.');
+        var userNumResp = prompt(questAboutMe[i] + ' (It\'s between 1 and 20.) You have ' + numOfGuesses + ' out of 5 guesses left.');
         console.log('This is the user\'s input: ' + userNumResp);
         userNumResp = parseInt(userNumResp, 10); // Now user input is an integer
         console.log('This is the user\'s input as an integer: ' + userNumResp);
 
         if (userNumResp === numGuitars){
           alert('Nice guess! You are correct!');
+          score++;
+          isCorrect = true;
+          console.log('The user\'s score so far: Score = ' + score);
+          break;
+        } else {
+          numOfGuesses--;
+        }
+      }
+
+      if (!isCorrect){ //If we go through all of our guesses this displays on alert before moving to next question.
+        alert('Nice try but I have ' + numGuitars + '.');
+      }
+
+    } else if (i === 6) { // adjusting for question #7
+      
+      numOfGuesses = 6; 
+      
+      while (numOfGuesses > 0) {
+        userResp = prompt(questAboutMe[i] + ' There\'s 7 of them. You have ' + numOfGuesses + ' out of 6 guesses left.');
+        console.log('This is the user\'s input: ' + userNumResp);
+        shrtUserResp = userResp.toLowerCase();
+        console.log('This is the user\'s response lowercased: ' + shrtUserResp);
+
+        for (var j = 0; j < statesVisited.length; j++){
+          if (shrtUserResp === statesVisited[j]) {
+            var isCorrect = true;
+            break; 
+          } else {
+            isCorrect = false; 
+          }
+        }
+
+        if (isCorrect){
+          alert('Nice guess! You are correct! Here were all of the possible answers:' + statesVisitedFormat.toString() + '.' );
           score++;
           console.log('The user\'s score so far: Score = ' + score);
           break;
@@ -82,7 +128,12 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
         }
       }
 
-    } else {
+      if (!isCorrect){
+        alert('At least you tried! Here were all the possible answers you could have put:' + statesVisitedFormat.toString() + '.');
+      }
+      
+    }
+    else {
 
       userResp = prompt(questAboutMe[i]);
       console.log('This is the user\'s response: ' + userResp); //Displaying answer given in console.
