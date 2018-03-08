@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // function quizAboutMe() {} // SAVE FOR LATER. Creating a function so it can be called rather than start right when the browser opens.
 var questAboutMe = [ // Creating an array that will store my questions for the quiz.
