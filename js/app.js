@@ -14,7 +14,7 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     'If you had to guess, how many guitars do you think I have?',
 
-    'Can you guess a state that I have lived in?'
+    'Can you guess a state that I have traveled to?'
   ];
 
   var numGuitars = Math.floor((Math.random() * 20) + 1); //Creating a random answer for # of guitars.
@@ -22,9 +22,9 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
   var statesVisited = ['washington', 'hawaii', 'idaho', 'montana', 'california', 'oregon', 'utah'];
 
-  var statesVisitedFormat = []; 
+  var statesVisitedFormat = []; // Will be used to display states for question #7. Comes in handy later.
 
-  for (var k = 0; k < statesVisited.length; k++){
+  for (var k = 0; k < statesVisited.length; k++){ // Created a 'space' and capital letter for the state. 
     statesVisitedFormat[k] = ' ' + statesVisited[k].substring(0, 1).toUpperCase() + statesVisited[k].slice(1);
   }
 
@@ -76,6 +76,8 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     if (i === 5) { // Adjust questioning for Question #6 
       
+      alert('Time for some bonus questions!! Can you guess the right answer?');
+
       var numOfGuesses = 5;
       
       while (numOfGuesses > 0) {
@@ -101,6 +103,8 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
 
     } else if (i === 6) { // adjusting for question #7
       
+      alert('Here\'s another bonus question!');
+
       numOfGuesses = 6; 
       
       while (numOfGuesses > 0) {
@@ -159,6 +163,7 @@ function quizAboutMe() { // Creating a function so it can be called rather than 
       }
     }
   }
+  alert('That\'s it! Let\'s see what your score was.');
   document.getElementById('takeQuiz').style.display = 'none'; // Removing "Take the quiz" button after quiz is taken.
   document.getElementById('scoreHead').style.display = 'inherit'; // Displaying Score Header after quiz is taken.
   document.getElementById('score').innerHTML = score + '/5'; // Displaying Total Score after quiz is taken.
