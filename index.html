@@ -9,21 +9,23 @@
 
     <body>
         <header>
-
+            <div class="header-overlay"></div>
             <nav>
                 <ul>
                     <li id="home"><a href="#">Home</a></li>
                     <li id="about"><a href="#">About</a></li>
                     <li id="contact"><a href="#">Contact</a></li>
-                    <li id="quiz"><a href="#">Take A Quiz</a></li>
+                    <li id="quiz"><a href="#" onclick='quizAboutMe()'>Take A Quiz</a></li>
                 </ul>
             </nav>
-
-            <h1>This is a page about me.</h1>
-            <h2>My name is Justin Morris.</h2>
-            <img src="./img/justin_headshot.jpg" />
-            <div id="circleAroundImage1"></div>
-            <div id="circleAroundImage2"></div>
+            <div id="fp-container">
+                <h1>This is a page about me.</h1>
+                <h2>My name is Justin Morris.</h2>
+                <div id="fp-image-container">
+                    <img src="./img/justin_headshot2.jpg" />
+                    <div id="circleAroundImage1"></div>
+                </div>
+            </div>
             
             
             <h6 id="scoreHead">Your Score is:</h6>
@@ -31,7 +33,7 @@
 
 
             <script src="js/app.js"></script>
-        <header>
+        </header>
     </body>
 
 </html>
