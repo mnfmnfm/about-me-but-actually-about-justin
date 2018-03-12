@@ -1,6 +1,8 @@
 'use strict';
 
-function quizAboutMe() { // SAVE FOR LATER. Creating a function so it can be called rather than start right when the browser opens.
+
+function quizAboutMe() { //eslint-disable-line 
+//Creating a function so it can be called rather than start right when the browser opens.
 
   var questAboutMe = [ // Creating an array that will store my questions for the quiz.
     'Do you think I was born in Mexico?',
@@ -106,7 +108,11 @@ function quizAboutMe() { // SAVE FOR LATER. Creating a function so it can be cal
             isCorrect = true;
             console.log('The user\'s score so far: Score = ' + score);
             break;
+          } else if (userNumResp > numGuitars){
+            alert('Your guess was too high.');
+            numOfGuesses--;
           } else {
+            alert('Your guess was too low.');
             numOfGuesses--;
           }
         }
@@ -182,6 +188,22 @@ function quizAboutMe() { // SAVE FOR LATER. Creating a function so it can be cal
   launchQuiz();
 
   alert('That\'s it! Let\'s see what your score was.');
+  document.getElementById('scoreCircle').style.display = 'inherit';
   document.getElementById('scoreHead').style.display = 'inherit'; // Displaying Score Header after quiz is taken.
   document.getElementById('score').innerHTML = score + '/5'; // Displaying Total Score after quiz is taken.
+}
+
+function changeBackground() { //eslint-disable-line 
+  var img1 = 'url(./img/alden-skeie-99965-unsplash.jpg)';
+  var img2 = 'url(./img/boise-knitting-factory.jpg)';
+  var img3 = 'url(./img/invisiblepower-201984-unsplash.jpg)';
+  var img4 = 'url(./img/jeremy-bishop-123457-unsplash.jpg)';
+  var img5 = 'url(./img/matthew-henry-8824-unsplash.jpg)';
+  var img6 = 'url(./img/thomas-kelley-78865-unsplash.jpg)';
+
+  var backgroundImg = [img1, img2, img3, img4, img5, img6];
+
+  var i = Math.floor((Math.random() * 6));
+
+  document.getElementById('background').style.backgroundImage = backgroundImg[i];
 }
