@@ -30,7 +30,7 @@ div {
     position: relative;
 }
 h1, h2, h3, h4, h5, h6, p, nav {
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Patua One', cursive, serif;
 }
 h1, h2, h3, h4, h5, h6 {
     text-align:center;
@@ -47,8 +47,8 @@ h2 {
     font-size: 28px;
     clear:left;
 }
-h6 {
-    font-size:14px;
+h3 {
+    font-size:24px;
 }
 nav {
     position: absolute;
@@ -90,18 +90,26 @@ nav ul li:hover::before {
     transform: rotate(0deg);
 }
 
-img {
-    display: block;
+img, #scoreCircle {
     position: absolute;
     top: 25px;
     left: 0;
     right: 0;
     height: 300px;
-    width: auto;
+    width: 300px;
     border-radius: 50%;
     z-index: 3;
     margin: 0 auto;
     transition: all ease .6s;
+}
+img {
+    z-index: 3;
+}
+
+#scoreCircle {
+    display:none;
+    background: rgb(5, 214, 5);
+    z-index: 4;
 }
 #circleAroundImage1 {
     display:block;
@@ -129,20 +137,22 @@ img:hover ~ #circleAroundImage1 {
 }
 #score {
     color: white;
-    font-size: 24px;
+    font-size: 70px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     position: absolute;
-    bottom: 8vh;
+    top: 160px;
     left: 0;
     right: 0;
+    z-index: 5;
 }
-h6#scoreHead {
+#scoreHead {
     display:none;
     position: absolute;
-    bottom: 12vh;
+    top:95px;
     left: 0;
     right: 0;
+    z-index: 5;
 }
 
 #fp-container {
